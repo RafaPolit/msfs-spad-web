@@ -8,7 +8,7 @@ type SpadConfig = {
 };
 
 const defaultValues: SpadConfig = {
-  address: "192.168.0.1",
+  address: "http://192.168.0.1",
   port: "28001",
   apiKey: "",
   token: "",

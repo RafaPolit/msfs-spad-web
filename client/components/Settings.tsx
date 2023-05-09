@@ -31,7 +31,7 @@ const Settings = ({ module }: SettingsProps) => {
   const challenge = async () => {
     try {
       await Challenge({
-        url: `http://${spadConfig.address}:${spadConfig.port}`,
+        url: `${spadConfig.address}:${spadConfig.port}`,
       });
       setChallengeStatus(1);
       setError("");
@@ -44,7 +44,7 @@ const Settings = ({ module }: SettingsProps) => {
   const challengeAccept = async () => {
     try {
       const response = await ChallengeAccept({
-        url: `http://${spadConfig.address}:${spadConfig.port}`,
+        url: `${spadConfig.address}:${spadConfig.port}`,
         token: spadConfig.token,
       });
       setSpadConfig((oldValues) => ({
@@ -64,7 +64,7 @@ const Settings = ({ module }: SettingsProps) => {
   const testConnection = async () => {
     try {
       const currentAircraft = await DataGet({
-        url: `http://${spadConfig.address}:${spadConfig.port}`,
+        url: `${spadConfig.address}:${spadConfig.port}`,
         apikey: spadConfig.apiKey,
         name: "LOCAL:SPAD_AIRCRAFT",
       });
