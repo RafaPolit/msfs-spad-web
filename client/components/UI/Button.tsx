@@ -1,5 +1,8 @@
 import React from "react";
-import { udp } from "../../scripts/udp";
+import { useRecoilValue } from "recoil";
+import { spadConfigState } from "../../atoms/spadConfig";
+import { timeout } from "../../scripts/timeout";
+import { DataSet } from "../../spadAPI/dataSet";
 
 type TextProps = {
   children: string;
@@ -11,29 +14,49 @@ const Text = ({ children }: TextProps) => {
 
 type ButtonProps = {
   icon: JSX.Element;
-  command: string;
+  name: string;
+  value: string;
   iconOnly?: boolean;
-  keybind?: string;
   children?: string;
+  keybind?: string;
 };
 
 const button =
   "flex relative items-center bg-gray-700 rounded-lg outline outline-1 outline-offset-8 outline-gray-400 px-6 py-3";
 const buttonOnlyIcon =
-  "flex relative items-center bg-[#212528] rounded-lg outline outline-1 outline-gray-700 px-3 py-2";
+  "flex relative items-center bg-gray-700 rounded-lg outline outline-1 outline-offset-8 outline-gray-400 px-6 py-3";
 
 const Button = ({
   icon,
   iconOnly = false,
-  command,
-  keybind,
+  name,
+  value,
   children,
+  keybind,
 }: ButtonProps) => {
+  const spadConfig = useRecoilValue(spadConfigState);
+
+  const click = async () => {
+    await DataSet({
+      url: `${spadConfig.address}:${spadConfig.port}`,
+      apikey: spadConfig.apiKey,
+      name,
+      value,
+    });
+    await timeout(500);
+    await DataSet({
+      url: `${spadConfig.address}:${spadConfig.port}`,
+      apikey: spadConfig.apiKey,
+      name,
+      value: "0",
+    });
+  };
+
   const Icon = React.cloneElement(icon, { className: "text-4xl" });
   return (
     <button
       className={iconOnly ? buttonOnlyIcon : button}
-      onClick={() => udp("Set", `LoSetCommand ${command}`)}
+      onClick={async () => await click()}
     >
       {Icon}
       {!iconOnly && (
