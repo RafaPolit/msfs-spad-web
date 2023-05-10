@@ -10,6 +10,14 @@ const ModuleTabs = ({ pane, setPane }: TabsProps) => {
     <Tabs module="ATR 42-600 / 72-600" setPane={setPane}>
       <li>
         <button
+          className={pane === "fgcp" ? tabClassCurrent : tabClass}
+          onClick={() => setPane("fgcp")}
+        >
+          FGCP (AP)
+        </button>
+      </li>
+      <li>
+        <button
           className={pane === "efis" ? tabClassCurrent : tabClass}
           onClick={() => setPane("efis")}
         >
