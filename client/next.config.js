@@ -2,9 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   publicRuntimeConfig: {
-    dcsIP: process.env.DCS_IP,
-    socketURL: process.env.SOCKET_URL || "",
-    socketPORT: process.env.SOCKET_PORT || "3001",
+    spadIP: process.env.SPAD_IP || "http://192.168.0.1",
+    spadPORT: process.env.SPAD_PORT || "28001",
+    spadApiKey: process.env.SPAD_APIKEY || "",
   },
   experimental: {
     images: {

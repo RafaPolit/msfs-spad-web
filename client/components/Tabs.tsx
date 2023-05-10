@@ -19,10 +19,8 @@ const Tabs = ({ setPane, module, children }: TabsProps) => {
     <div>
       <ul className="flex flex-wrap text-md font-medium text-center text-neutral-200 pt-1 px-2 mb-1 bg-black">
         <li>
-          <Link href="/">
-            <a className={homeClass}>
-              <GiCommercialAirplane />
-            </a>
+          <Link href="/" className={homeClass}>
+            <GiCommercialAirplane />
           </Link>
         </li>
         {children}

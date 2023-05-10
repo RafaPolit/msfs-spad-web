@@ -1,6 +1,9 @@
+import getConfig from "next/config";
 import { atom } from "recoil";
 
-type SpadConfig = {
+const { publicRuntimeConfig } = getConfig();
+
+export type SpadConfig = {
   address: string;
   port: string;
   apiKey: string;
@@ -8,9 +11,9 @@ type SpadConfig = {
 };
 
 const defaultValues: SpadConfig = {
-  address: "http://192.168.0.1",
-  port: "28001",
-  apiKey: "",
+  address: publicRuntimeConfig.spadIP,
+  port: publicRuntimeConfig.spadPORT,
+  apiKey: publicRuntimeConfig.spadApiKey,
   token: "",
 };
 

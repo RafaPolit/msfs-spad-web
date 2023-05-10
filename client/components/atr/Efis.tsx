@@ -1,43 +1,41 @@
 import React from "react";
-import {
-  AiOutlineCaretUp,
-  AiOutlineCaretDown,
-  AiOutlineDown,
-} from "react-icons/ai";
-import { Button } from "../UI/Button";
+import Image from "next/image";
+import { useRecoilValue } from "recoil";
+import { spadConfigState } from "../../atoms/spadConfig";
+import { clickButton } from "../../scripts/clickButton";
+
+const buttonClass = "absolute w-[57px] h-[40px] bg-red-700 opacity-50";
 
 const Efis = () => {
+  const spadConfig = useRecoilValue(spadConfigState);
+
   return (
-    <div className="m-4">
-      <div className="mb-8">
-        <Button
-          icon={<AiOutlineCaretUp />}
-          iconOnly
-          name="LVAR:MSATR_EFIS_PROC_UP_1"
-          value="1"
-        >
-          Up
-        </Button>
-      </div>
-      <div className="mb-8">
-        <Button
-          icon={<AiOutlineCaretDown />}
-          iconOnly
-          name="LVAR:MSATR_EFIS_PROC_DN_1"
-          value="1"
-        >
-          Down
-        </Button>
-      </div>
-      <div>
-        <Button
-          icon={<AiOutlineDown />}
-          iconOnly
-          name="LVAR:MSATR_EFIS_PROC_VAL_1"
-          value="1"
-        >
-          Validate
-        </Button>
+    <div className=" flex place-content-center w-full py-20">
+      <div className="relative w-[780px] h-[222px]">
+        <Image
+          src="/atr/EFIS-left.png"
+          alt="ATR EFIS Left"
+          layout="fill"
+          priority={true}
+        />
+        <button
+          className={`${buttonClass} top-[65px] left-[367px]`}
+          onClick={async () =>
+            await clickButton(spadConfig, "LVAR:MSATR_EFIS_PROC_UP_1")
+          }
+        />
+        <button
+          className={`${buttonClass} top-[111px] left-[367px]`}
+          onClick={async () =>
+            await clickButton(spadConfig, "LVAR:MSATR_EFIS_PROC_DN_1")
+          }
+        />
+        <button
+          className={`${buttonClass} top-[159px] left-[365px]`}
+          onClick={async () =>
+            await clickButton(spadConfig, "LVAR:MSATR_EFIS_PROC_VAL_1")
+          }
+        />
       </div>
     </div>
   );

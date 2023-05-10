@@ -165,6 +165,11 @@ const Settings = ({ module }: SettingsProps) => {
         </div>
         <div className="flex flex-row text-lg">
           <p>
+            ApiKey: <span>{spadConfig.apiKey}</span>
+          </p>
+        </div>
+        <div className="flex flex-row text-lg">
+          <p>
             Error:{" "}
             {error ? (
               <span className="text-red-600">{error}</span>
