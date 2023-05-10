@@ -13,7 +13,7 @@ const ModuleTabs = ({ pane, setPane }: TabsProps) => {
           className={pane === "efis" ? tabClassCurrent : tabClass}
           onClick={() => setPane("efis")}
         >
-          Efis
+          MCP / EFIS
         </button>
       </li>
     </Tabs>
