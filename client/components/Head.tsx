@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-sync-scripts */
 import Head from "next/head";
 
 interface HeadProps {
@@ -10,6 +11,8 @@ const HeadWrapper = ({ children }: HeadProps) => {
       <title>{children}</title>
       <meta name="description" content="MSFS SPAD Web" />
       <link rel="icon" href="/favicon.ico" />
+      <script src="js/jquery.min.js" />
+      <script src="js/ss-utils.js" />
     </Head>
   );
 };
