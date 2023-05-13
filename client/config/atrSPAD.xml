@@ -324,20 +324,6 @@
           </EventDefinition>
         </EventDefinitions>
       </Event>
-      <Event BoundTo="E_ALT">
-        <EventDefinitions>
-          <EventDefinition Trigger="TUNER_COUNTERCLOCKWISE" EnableAcceleration="true">
-            <EventActions>
-              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_ALTSEL_DELTA" Value="-1" />
-            </EventActions>
-          </EventDefinition>
-          <EventDefinition Trigger="TUNER_CLOCKWISE" EnableAcceleration="true">
-            <EventActions>
-              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_ALTSEL_DELTA" Value="1" />
-            </EventActions>
-          </EventDefinition>
-        </EventDefinitions>
-      </Event>
       <Event BoundTo="I_ALT_DEC">
         <EventDefinitions>
           <EventDefinition Trigger="PRESS">
@@ -467,6 +453,7 @@
           </EventDefinition>
         </EventDefinitions>
       </Event>
+      <Event BoundTo="HDG_PUSH" />
       <Event BoundTo="E_HDG">
         <EventDefinitions>
           <EventDefinition Trigger="TUNER_CLOCKWISE" EnableAcceleration="true">
@@ -496,12 +483,33 @@
           <EventDefinition Trigger="PRESS">
             <EventActions>
               <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_SEL_HDG_SYNC" Value="1" />
-            </EventActions>
-          </EventDefinition>
-          <EventDefinition Trigger="RELEASE">
-            <EventActions>
+              <EventActionDelay Delay="50" />
               <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_SEL_HDG_SYNC" Value="0" />
             </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="E_ALT">
+        <EventDefinitions>
+          <EventDefinition Trigger="TUNER_COUNTERCLOCKWISE" EnableAcceleration="true">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_ALTSEL_DELTA" Value="1" ValueOperation="Decrement" />
+            </EventActions>
+            <Options>
+              <Option Key="ACCEL_MULTIPLIER" Value="2" />
+              <Option Key="ACCEL_MAX" Value="3" />
+              <Option Key="ACCEL_TIMEOUT" Value="300" />
+            </Options>
+          </EventDefinition>
+          <EventDefinition Trigger="TUNER_CLOCKWISE" EnableAcceleration="true">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_ALTSEL_DELTA" Value="1" ValueOperation="Increment" />
+            </EventActions>
+            <Options>
+              <Option Key="ACCEL_MULTIPLIER" Value="2" />
+              <Option Key="ACCEL_MAX" Value="3" />
+              <Option Key="ACCEL_TIMEOUT" Value="300" />
+            </Options>
           </EventDefinition>
         </EventDefinitions>
       </Event>
