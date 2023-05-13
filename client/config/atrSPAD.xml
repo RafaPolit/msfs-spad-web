@@ -1,0 +1,513 @@
+<Device xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" VendorID="WS" ProductID="f1a4b5cc-b5ca-41dd-bb6a-7c5a65d9d7b4" DevicePath="f1a4b5cc-b5ca-41dd-bb6a-7c5a65d9d7b4/1" Serial="1" DeviceIndex="1" Version="3" xmlns="http://www.fsgs.com/SPAD">
+  <DevicePage ID="72c73483-060e-4a22-94be-a6d0c6e32179" IsDefaultPage="true" Name="Default">
+    <Events>
+      <Event BoundTo="HDG">
+        <EventDefinitions>
+          <EventDefinition Trigger="PRESS">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_HDG" Value="1" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="D_2">
+        <EventDefinitions>
+          <EventDefinition Trigger="D_2_ROW_1">
+            <EventActions>
+              <EventActionDisplayValue TargetDataDefinition="LVAR:MSATR_FGCP_SRC2" DisplayFormat="0" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="D_1">
+        <EventDefinitions>
+          <EventDefinition Trigger="D_1_ROW_1">
+            <EventActions>
+              <EventActionDisplayValue TargetDataDefinition="LVAR:MSATR_FGCP_SRC1" DisplayFormat="0" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="L_CPL_CPT">
+        <EventDefinitions>
+          <EventDefinition Trigger="BUTTONLIGHT">
+            <EventConditions>
+              <EventCondition ConditionComparator="Equals" ConditionTargetValue="0" ConditionValueSource="LVAR:MSATR_FGCP_CPL_CPT_LT" />
+            </EventConditions>
+            <EventActions>
+              <EventActionButtonLight ButtonLight="OFF" />
+            </EventActions>
+          </EventDefinition>
+          <EventDefinition Trigger="BUTTONLIGHT">
+            <EventConditions>
+              <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="LVAR:MSATR_FGCP_CPL_CPT_LT" />
+            </EventConditions>
+            <EventActions>
+              <EventActionButtonLight ButtonLight="ON" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="L_CPL_FO">
+        <EventDefinitions>
+          <EventDefinition Trigger="BUTTONLIGHT">
+            <EventConditions>
+              <EventCondition ConditionComparator="Equals" ConditionTargetValue="0" ConditionValueSource="LVAR:MSATR_FGCP_CPL_FO_LT" />
+            </EventConditions>
+            <EventActions>
+              <EventActionButtonLight ButtonLight="OFF" />
+            </EventActions>
+          </EventDefinition>
+          <EventDefinition Trigger="BUTTONLIGHT">
+            <EventConditions>
+              <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="LVAR:MSATR_FGCP_CPL_FO_LT" />
+            </EventConditions>
+            <EventActions>
+              <EventActionButtonLight ButtonLight="ON" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="L_AP_FO">
+        <EventDefinitions>
+          <EventDefinition Trigger="BUTTONLIGHT">
+            <EventConditions>
+              <EventCondition ConditionComparator="Equals" ConditionTargetValue="0" ConditionValueSource="LVAR:MSATR_FGCP_AP_ON_FO_LT" />
+            </EventConditions>
+            <EventActions>
+              <EventActionButtonLight ButtonLight="OFF" />
+            </EventActions>
+          </EventDefinition>
+          <EventDefinition Trigger="BUTTONLIGHT">
+            <EventConditions>
+              <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="LVAR:MSATR_FGCP_AP_ON_FO_LT" />
+            </EventConditions>
+            <EventActions>
+              <EventActionButtonLight ButtonLight="ON" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="L_AP_CPT">
+        <EventDefinitions>
+          <EventDefinition Trigger="BUTTONLIGHT">
+            <EventConditions>
+              <EventCondition ConditionComparator="Equals" ConditionTargetValue="0" ConditionValueSource="LVAR:MSATR_FGCP_AP_ON_CPT_LT" />
+            </EventConditions>
+            <EventActions>
+              <EventActionButtonLight ButtonLight="OFF" />
+            </EventActions>
+          </EventDefinition>
+          <EventDefinition Trigger="BUTTONLIGHT">
+            <EventConditions>
+              <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="LVAR:MSATR_FGCP_AP_ON_CPT_LT" />
+            </EventConditions>
+            <EventActions>
+              <EventActionButtonLight ButtonLight="ON" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="L_YD_CPT">
+        <EventDefinitions>
+          <EventDefinition Trigger="BUTTONLIGHT">
+            <EventConditions>
+              <EventCondition ConditionComparator="Equals" ConditionTargetValue="0" ConditionValueSource="LVAR:MSATR_FGCP_YD_ON_CPT_LT" />
+            </EventConditions>
+            <EventActions>
+              <EventActionButtonLight ButtonLight="OFF" />
+            </EventActions>
+          </EventDefinition>
+          <EventDefinition Trigger="BUTTONLIGHT">
+            <EventConditions>
+              <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="LVAR:MSATR_FGCP_YD_ON_CPT_LT" />
+            </EventConditions>
+            <EventActions>
+              <EventActionButtonLight ButtonLight="ON" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="L_YD_FO">
+        <EventDefinitions>
+          <EventDefinition Trigger="BUTTONLIGHT">
+            <EventConditions>
+              <EventCondition ConditionComparator="Equals" ConditionTargetValue="0" ConditionValueSource="LVAR:MSATR_FGCP_YD_ON_FO_LT" />
+            </EventConditions>
+            <EventActions>
+              <EventActionButtonLight ButtonLight="OFF" />
+            </EventActions>
+          </EventDefinition>
+          <EventDefinition Trigger="BUTTONLIGHT">
+            <EventConditions>
+              <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="LVAR:MSATR_FGCP_YD_ON_FO_LT" />
+            </EventConditions>
+            <EventActions>
+              <EventActionButtonLight ButtonLight="ON" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="NAV">
+        <EventDefinitions>
+          <EventDefinition Trigger="PRESS">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_NAV" Value="1" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="APP">
+        <EventDefinitions>
+          <EventDefinition Trigger="PRESS">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_APP" Value="1" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="BC">
+        <EventDefinitions>
+          <EventDefinition Trigger="PRESS">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_BC" Value="1" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="STBY">
+        <EventDefinitions>
+          <EventDefinition Trigger="PRESS">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_STBY" Value="1" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="N_DWN">
+        <EventDefinitions>
+          <EventDefinition Trigger="PRESS">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FCGP_PITCH_WHEEL_DELTA" Value="-1" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="N_UP">
+        <EventDefinitions>
+          <EventDefinition Trigger="PRESS">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FCGP_PITCH_WHEEL_DELTA" Value="1" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="IAS">
+        <EventDefinitions>
+          <EventDefinition Trigger="PRESS">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_IAS" Value="1" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="VS">
+        <EventDefinitions>
+          <EventDefinition Trigger="PRESS">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_VS" Value="1" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="VNAV">
+        <EventDefinitions>
+          <EventDefinition Trigger="PRESS">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_VNAV" Value="1" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="ALT">
+        <EventDefinitions>
+          <EventDefinition Trigger="PRESS">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_ALT" Value="1" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="AP">
+        <EventDefinitions>
+          <EventDefinition Trigger="PRESS">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_AP" Value="1" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="YD">
+        <EventDefinitions>
+          <EventDefinition Trigger="PRESS">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_YD" Value="1" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="SPD_HLD">
+        <EventDefinitions>
+          <EventDefinition Trigger="PRESS">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_SPDHLD" Value="1" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="CPL">
+        <EventDefinitions>
+          <EventDefinition Trigger="PRESS">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_CPL" Value="1" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="FD1">
+        <EventDefinitions>
+          <EventDefinition Trigger="PRESS">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_FD1" Value="1" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="FD2">
+        <EventDefinitions>
+          <EventDefinition Trigger="PRESS">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_FD2" Value="1" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="I_HDG_DEC">
+        <EventDefinitions>
+          <EventDefinition Trigger="PRESS">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_SEL_HDG" Value="1" ValueOperation="Decrement">
+                <Options>
+                  <Option Key="HASMINMAX" Value="True" />
+                  <Option Key="VALUEMAX" Value="359" />
+                  <Option Key="ROLLOVER" Value="True" />
+                </Options>
+              </EventActionChangeValue>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_SEL_HDG_CHANGED" Value="1" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="I_HDG_INC">
+        <EventDefinitions>
+          <EventDefinition Trigger="PRESS">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_SEL_HDG" Value="1" ValueOperation="Increment">
+                <Options>
+                  <Option Key="HASMINMAX" Value="True" />
+                  <Option Key="VALUEMAX" Value="359" />
+                  <Option Key="ROLLOVER" Value="True" />
+                </Options>
+              </EventActionChangeValue>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_SEL_HDG_CHANGED" Value="1" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="E_ALT">
+        <EventDefinitions>
+          <EventDefinition Trigger="TUNER_COUNTERCLOCKWISE" EnableAcceleration="true">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_ALTSEL_DELTA" Value="-1" />
+            </EventActions>
+          </EventDefinition>
+          <EventDefinition Trigger="TUNER_CLOCKWISE" EnableAcceleration="true">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_ALTSEL_DELTA" Value="1" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="I_ALT_DEC">
+        <EventDefinitions>
+          <EventDefinition Trigger="PRESS">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_ALTSEL_DELTA" Value="-1" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="I_ALT_INC">
+        <EventDefinitions>
+          <EventDefinition Trigger="PRESS">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_ALTSEL_DELTA" Value="1" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="E_CRS1">
+        <EventDefinitions>
+          <EventDefinition Trigger="TUNER_COUNTERCLOCKWISE" EnableAcceleration="true">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_CRS1_DELTA" Value="-1" />
+            </EventActions>
+          </EventDefinition>
+          <EventDefinition Trigger="TUNER_CLOCKWISE" EnableAcceleration="true">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_CRS1_DELTA" Value="1" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="E_CRS2">
+        <EventDefinitions>
+          <EventDefinition Trigger="TUNER_COUNTERCLOCKWISE" EnableAcceleration="true">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_CRS2_DELTA" Value="-1" />
+            </EventActions>
+          </EventDefinition>
+          <EventDefinition Trigger="TUNER_CLOCKWISE" EnableAcceleration="true">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_CRS2_DELTA" Value="1" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="I_CRS1_DEC">
+        <EventDefinitions>
+          <EventDefinition Trigger="PRESS">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_CRS1_DELTA" Value="-1" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="I_CRS2_INC">
+        <EventDefinitions>
+          <EventDefinition Trigger="PRESS">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_CRS2_DELTA" Value="1" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="I_CRS2_DEC">
+        <EventDefinitions>
+          <EventDefinition Trigger="PRESS">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_CRS2_DELTA" Value="-1" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="I_SRC1_DEC">
+        <EventDefinitions>
+          <EventDefinition Trigger="PRESS">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_SRC1" Value="1" ValueOperation="Decrement">
+                <Options>
+                  <Option Key="HASMINMAX" Value="True" />
+                  <Option Key="VALUEMAX" Value="3" />
+                </Options>
+              </EventActionChangeValue>
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="I_SRC1_INC">
+        <EventDefinitions>
+          <EventDefinition Trigger="PRESS">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_SRC1" Value="1" ValueOperation="Increment">
+                <Options>
+                  <Option Key="HASMINMAX" Value="True" />
+                  <Option Key="VALUEMAX" Value="3" />
+                </Options>
+              </EventActionChangeValue>
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="I_SRC2_INC">
+        <EventDefinitions>
+          <EventDefinition Trigger="PRESS">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_SRC2" Value="1" ValueOperation="Increment">
+                <Options>
+                  <Option Key="HASMINMAX" Value="True" />
+                  <Option Key="VALUEMAX" Value="3" />
+                </Options>
+              </EventActionChangeValue>
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="I_SRC2_DEC">
+        <EventDefinitions>
+          <EventDefinition Trigger="PRESS">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_FGCP_SRC2" Value="1" ValueOperation="Decrement">
+                <Options>
+                  <Option Key="HASMINMAX" Value="True" />
+                  <Option Key="VALUEMAX" Value="3" />
+                </Options>
+              </EventActionChangeValue>
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+      <Event BoundTo="E_HDG">
+        <EventDefinitions>
+          <EventDefinition Trigger="TUNER_CLOCKWISE" EnableAcceleration="true">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_SEL_HDG" Value="1" ValueOperation="Increment">
+                <Options>
+                  <Option Key="HASMINMAX" Value="True" />
+                  <Option Key="VALUEMAX" Value="359" />
+                  <Option Key="ROLLOVER" Value="True" />
+                </Options>
+              </EventActionChangeValue>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_SEL_HDG_CHANGED" Value="1" />
+            </EventActions>
+          </EventDefinition>
+          <EventDefinition Trigger="TUNER_COUNTERCLOCKWISE" EnableAcceleration="true">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_SEL_HDG" Value="1" ValueOperation="Decrement">
+                <Options>
+                  <Option Key="HASMINMAX" Value="True" />
+                  <Option Key="VALUEMAX" Value="359" />
+                  <Option Key="ROLLOVER" Value="True" />
+                </Options>
+              </EventActionChangeValue>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_SEL_HDG_CHANGED" Value="1" />
+            </EventActions>
+          </EventDefinition>
+          <EventDefinition Trigger="PRESS">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_SEL_HDG_SYNC" Value="1" />
+            </EventActions>
+          </EventDefinition>
+          <EventDefinition Trigger="RELEASE">
+            <EventActions>
+              <EventActionChangeValue TargetDataDefinition="LVAR:MSATR_SEL_HDG_SYNC" Value="0" />
+            </EventActions>
+          </EventDefinition>
+        </EventDefinitions>
+      </Event>
+    </Events>
+    <Extensions />
+  </DevicePage>
+  <Events />
+  <Extensions />
+</Device>

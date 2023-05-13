@@ -58,11 +58,7 @@ class SPADConnect {
 
   ConnectSerial() {
     $.post(
-      this.remoteHost +
-        "serialapi/" +
-        this.sessionId +
-        "/connect?apikey=" +
-        this.apiKey,
+      `${this.remoteHost}serialapi/${this.sessionId}/connect?apikey=${this.apiKey}`,
       { DeviceID: this.DeviceID, InstanceID: this.InstanceID },
       function () {}
     ).fail(this.onError);
@@ -70,11 +66,7 @@ class SPADConnect {
 
   DisconnectSerial() {
     $.post(
-      this.remoteHost +
-        "serialapi/" +
-        this.sessionId +
-        "/disconnect?apikey=" +
-        this.apiKey,
+      `${this.remoteHost}serialapi/${this.sessionId}/disconnect?apikey=${this.apiKey}`,
       { DeviceID: this.DeviceID, InstanceID: this.InstanceID },
       () => {}
     ).fail(this.onError);
@@ -86,11 +78,7 @@ class SPADConnect {
 
   SendEvent(msg: string) {
     $.post(
-      this.remoteHost +
-        "serialapi/" +
-        this.sessionId +
-        "/event?apikey=" +
-        this.apiKey,
+      `${this.remoteHost}serialapi/${this.sessionId}/event?apikey=${this.apiKey}`,
       { Message: this.curStack + msg },
       function () {}
     ).fail(this.onError);
@@ -108,6 +96,15 @@ class SPADConnect {
         onConnect: (subscription: any) => {
           console.log("Connected to SPAD! received:", subscription);
           this.sessionId = subscription.id;
+          $.post(
+            `http://192.168.0.47:3000/api/spad-config`,
+            {
+              remoteHost: this.remoteHost,
+              sessionId: subscription.id,
+              apiKey: this.apiKey,
+            },
+            function () {}
+          ).fail(this.onError);
           this.ConnectSerial();
         },
 

@@ -1,20 +1,14 @@
-import getConfig from "next/config";
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import Image from "next/image";
 import { useRecoilValue } from "recoil";
 import { SpadConfig, spadConfigState } from "../../atoms/spadConfig";
-import { clickButton } from "../../scripts/clickButton";
-import { increaseEncoder, decreaseEncoder } from "../../scripts/encoder";
-import { timeout } from "../../scripts/timeout";
 import { DataGet } from "../../spadAPI/dataGet";
 import { FGCPSourceModes } from "./FGCPSourceModes";
-import { decreaseSelector, increaseSelector } from "../../scripts/selectors";
 import { SPADConnect } from "../../scripts/SPADConnect";
 import { atrDevice } from "../../config/atr";
 
-const { publicRuntimeConfig } = getConfig();
-
-const mainButton = "absolute w-[57px] h-[40px]";
+const mainButton =
+  "absolute w-[51px] h-[36px] rounded-lg bg-red-700 opacity-30";
 const roundButton = "absolute w-[40px] h-[40px] rounded-full";
 const arrowButtonHor = "absolute w-[58px] h-[24px]";
 const arrowButtonVer = "absolute w-[24px] h-[58px]";
@@ -50,40 +44,6 @@ const Fgcp = () => {
   } as {
     [key: string]: string;
   });
-  const [src1, setSrc1] = useState("0");
-  const [src2, setSrc2] = useState("0");
-
-  // console.log("Public:", publicRuntimeConfig);
-
-  // let pollingTimerID = useRef({} as ReturnType<typeof setTimeout>);
-
-  // useEffect(() => {
-  //   console.log("Mount!");
-  //   const pollingService = {
-  //     intervalID: {} as ReturnType<typeof setTimeout>,
-  //     async poll() {
-  //       console.log("Polling");
-  //       await updateValue(spadConfig, "LVAR:MSATR_FGCP_SRC1", setSrc1);
-  //       await updateValue(spadConfig, "LVAR:MSATR_FGCP_SRC2", setSrc2);
-  //     },
-
-  //     setup() {
-  //       this.intervalID = setInterval(async () => {
-  //         await this.poll();
-  //       }, 50);
-  //       pollingTimerID.current = this.intervalID;
-  //     },
-  //   };
-
-  //   pollingService.setup();
-  // }, [spadConfig]);
-
-  // useEffect(
-  //   () => () => {
-  //     clearInterval(pollingTimerID.current);
-  //   },
-  //   []
-  // );
 
   const atrEventHandler = useMemo(
     () =>
@@ -128,26 +88,32 @@ const Fgcp = () => {
           src2={deviceData["22"]}
         />
         <button
+          className={`${mainButton} top-[7px] left-[240px]`}
+          onClick={() => atrEventHandler.SendEvent("8,1,1;8,1,0;")}
+        ></button>
+        <button
+          className={`${mainButton} top-[47px] left-[240px]`}
+          onClick={() => atrEventHandler.SendEvent("8,2,1;8,2,0;")}
+        ></button>
+        <button
+          className={`${mainButton} top-[87px] left-[240px]`}
+          onClick={() => atrEventHandler.SendEvent("8,3,1;8,3,0;")}
+        ></button>
+        <button
+          className={`${mainButton} top-[127px] left-[240px]`}
+          onClick={() => atrEventHandler.SendEvent("8,4,1;8,4,0;")}
+        ></button>
+        <button
+          className={`${mainButton} top-[167px] left-[240px]`}
+          onClick={() => atrEventHandler.SendEvent("8,5,1;8,5,0;")}
+        ></button>
+        <button
           className={`${encoder} top-[10px] left-[130px]`}
-          onClick={async () =>
-            await decreaseSelector(
-              spadConfig,
-              "LVAR:MSATR_FGCP_SRC1",
-              deviceDisplayUpdate["1"],
-              0
-            )
-          }
+          onClick={() => atrEventHandler.SendEvent("8,61,1;8,61,0;")}
         />
         <button
           className={`${encoder} top-[10px] left-[180px]`}
-          onClick={async () =>
-            await increaseSelector(
-              spadConfig,
-              "LVAR:MSATR_FGCP_SRC1",
-              deviceDisplayUpdate["1"],
-              3
-            )
-          }
+          onClick={() => atrEventHandler.SendEvent("8,62,1;8,62,0;")}
         />
       </div>
     </div>
