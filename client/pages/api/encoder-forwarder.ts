@@ -2,7 +2,8 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import Redis from "ioredis";
 
 const encoderMapping = {
-  1: { encoder: "2000", button: "6" },
+  // 1: { encoder: "2000", button: "20" },
+  1: { encoder: "3000", button: null },
 };
 
 type ResponseData = {
@@ -42,17 +43,21 @@ const handler = async (
 
     switch (value) {
       case "press":
-        results = await spadFetch(
-          spadSession,
-          `8,${encoderMapping[index].button},1;`
-        );
+        if (encoderMapping[index].button) {
+          results = await spadFetch(
+            spadSession,
+            `8,${encoderMapping[index].button},1;`
+          );
+        }
         break;
       case "release":
       case "longRelease":
-        results = await spadFetch(
-          spadSession,
-          `8,${encoderMapping[index].button},0;`
-        );
+        if (encoderMapping[index].button) {
+          results = await spadFetch(
+            spadSession,
+            `8,${encoderMapping[index].button},0;`
+          );
+        }
         break;
       default:
         results = await spadFetch(
@@ -60,8 +65,8 @@ const handler = async (
           `8,${encoderMapping[index].encoder},${value};`
         );
     }
-    // console.log(results);
-    res.status(200).json({ message: "Success" });
+
+    res.status(200).json(results);
   } else {
     res.status(403).json({ message: "Error!  Only POST method allowed" });
   }

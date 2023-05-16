@@ -1,9 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import { useRecoilValue } from "recoil";
-import { spadConfigState } from "../../atoms/spadConfig";
 import { clickButton } from "../../scripts/clickButton";
 import { increaseEncoder, decreaseEncoder } from "../../scripts/encoder";
+import { RemoteSpadConfig } from "../../scripts/getSpadServerSideProps";
 
 const mainButton = "absolute w-[57px] h-[40px]";
 const roundButton = "absolute w-[40px] h-[40px] rounded-full";
@@ -11,11 +10,13 @@ const arrowButtonHor = "absolute w-[58px] h-[24px]";
 const arrowButtonVer = "absolute w-[24px] h-[58px]";
 const encoder = "absolute w-[35px] h-[77px] rounded-lg bg-red-700 opacity-30";
 
-const Efis = () => {
-  const spadConfig = useRecoilValue(spadConfigState);
+interface EfisProps {
+  spadConfig: RemoteSpadConfig;
+}
 
+const Efis = ({ spadConfig }: EfisProps) => {
   return (
-    <div className=" flex flex-col gap-2 place-content-center w-full">
+    <div className=" flex flex-col gap-2 place-content-center w-full max-w-[800px] mx-auto">
       <div className="relative w-[495px] h-[180px] ml-[20px]">
         <Image
           src="/atr/MCP-left.png"

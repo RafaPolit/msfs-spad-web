@@ -1,16 +1,22 @@
 import { Device } from "../scripts/SPADConnect";
 
+export type DeviceState = {
+  [key: string]: string;
+};
+
 const atrDevice: Device = {
   DeviceID: "{f1a4b5cc-b5ca-41dd-bb6a-7c5a65d9d7b4}",
   Name: "Virtual ATR Cockpit",
   PID: "VATR",
-  AuthorID: "3870169da23f7cc86823120e6063521a",
+  AuthorID: "",
   Version: "0.2",
   InstanceID: 1,
   SUBSCRIBE: [],
   OUTPUT: [
     "1,D_1,DISPLAY,SPAD_DISPLAY,LENGTH=1,ROWS=1,WIDTH=20,HEIGHT=30,DEFAULT=0",
     "2,D_2,DISPLAY,SPAD_DISPLAY,LENGTH=1,ROWS=1,WIDTH=20,HEIGHT=30,DEFAULT=0",
+    "3,D_ALT,DISPLAY,SPAD_DISPLAY,LENGTH=5,ROWS=1,WIDTH=80,HEIGHT=30,DEFAULT=17000",
+    "4,D_HDG,DISPLAY,SPAD_DISPLAY,LENGTH=3,ROWS=1,WIDTH=60,HEIGHT=30,DEFAULT=360",
     "1,L_AP_CPT,LED,SPAD_LED,UI_FACE=3,IMG_ON=_PanelImages//LED_green.png,IMG_OFF=_PanelImages//LED_off.png,COL_0=LightGray,COL_1=Green",
     "2,L_AP_FO,LED,SPAD_LED,UI_FACE=3,IMG_ON=_PanelImages//LED_green.png,IMG_OFF=_PanelImages//LED_off.png,COL_0=LightGray,COL_1=Green",
     "3,L_YD_CPT,LED,SPAD_LED,UI_FACE=3,IMG_ON=_PanelImages//LED_green.png,IMG_OFF=_PanelImages//LED_off.png,COL_0=LightGray,COL_1=Green",
@@ -40,6 +46,7 @@ const atrDevice: Device = {
     "20,I_HDG_PUSH,PUSHBUTTON,SPAD_PUSHBUTTON,HIDDEN=1,ROUTETO=E_HDG",
     "21,I_HDG_DEC,PUSHBUTTON,SPAD_PUSHBUTTON",
     "22,I_HDG_INC,PUSHBUTTON,SPAD_PUSHBUTTON",
+    "23,HDG_PUSH,PUSHBUTTON,SPAD_PUSHBUTTON",
     "3000,E_ALT,ENCODER,SPAD_ENCODER",
     "31,I_ALT_DEC,PUSHBUTTON,SPAD_PUSHBUTTON",
     "32,I_ALT_INC,PUSHBUTTON,SPAD_PUSHBUTTON",

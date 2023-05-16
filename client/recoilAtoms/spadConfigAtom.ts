@@ -17,9 +17,9 @@ const defaultValues: SpadConfig = {
   token: "",
 };
 
-const spadConfigState = atom({
+const spadConfigAtom = atom({
   key: "spadConfig",
   default: defaultValues,
 });
 
-export { spadConfigState };
+export { spadConfigAtom };

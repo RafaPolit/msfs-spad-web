@@ -1,18 +1,18 @@
-import { SpadConfig } from "../atoms/spadConfig";
 import { DataSet } from "../spadAPI/dataSet";
 import { timeout } from "./timeout";
+import { RemoteSpadConfig } from "./getSpadServerSideProps";
 
-const clickButton = async (spadConfig: SpadConfig, name: string) => {
+const clickButton = async (spadConfig: RemoteSpadConfig, name: string) => {
   await DataSet({
-    url: `${spadConfig.address}:${spadConfig.port}`,
-    apikey: spadConfig.apiKey,
+    url: spadConfig.remoteHost || "",
+    apikey: spadConfig.apiKey || "",
     name,
     value: "1",
   });
   await timeout(500);
   await DataSet({
-    url: `${spadConfig.address}:${spadConfig.port}`,
-    apikey: spadConfig.apiKey,
+    url: spadConfig.remoteHost || "",
+    apikey: spadConfig.apiKey || "",
     name,
     value: "0",
   });
