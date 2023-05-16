@@ -1,5 +1,9 @@
 import { Device } from "../scripts/SPADConnect";
 
+export type DeviceState = {
+  [key: string]: string;
+};
+
 const atrDevice: Device = {
   DeviceID: "{f1a4b5cc-b5ca-41dd-bb6a-7c5a65d9d7b4}",
   Name: "Virtual ATR Cockpit",

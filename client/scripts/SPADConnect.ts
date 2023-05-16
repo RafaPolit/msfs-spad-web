@@ -1,4 +1,4 @@
-import { SpadConfig } from "../atoms/spadConfig";
+import { RemoteSpadConfig } from "./getSpadServerSideProps";
 
 export interface Device {
   DeviceID: string;
@@ -28,16 +28,16 @@ class SPADConnect {
   sessionId = "";
   curStack = "";
   setDeviceData: SetState;
-  setDeviceLedUpdate: SetState;
-  setDeviceDisplayUpdate: SetState;
+  setDeviceLed: SetState;
+  setDeviceDisplay: SetState;
 
   constructor(
-    spadConfig: SpadConfig,
+    spadConfig: RemoteSpadConfig,
     device: Device,
-    [setDeviceData, setDeviceLedUpdate, setDeviceDisplayUpdate]: SetStateArray
+    [setDeviceData, setDeviceLed, setDeviceDisplay]: SetStateArray
   ) {
-    this.remoteHost = `${spadConfig.address}:${spadConfig.port}/`;
-    this.apiKey = spadConfig.apiKey;
+    this.remoteHost = spadConfig.remoteHost || "";
+    this.apiKey = spadConfig.apiKey || "";
     this.Device = device;
     this.DeviceID = device.DeviceID;
     this.Name = device.Name;
@@ -46,8 +46,8 @@ class SPADConnect {
     this.Version = device.Version;
     this.InstanceID = device.InstanceID;
     this.setDeviceData = setDeviceData;
-    this.setDeviceLedUpdate = setDeviceLedUpdate;
-    this.setDeviceDisplayUpdate = setDeviceDisplayUpdate;
+    this.setDeviceLed = setDeviceLed;
+    this.setDeviceDisplay = setDeviceDisplay;
   }
 
   onError(e: any) {
@@ -97,12 +97,8 @@ class SPADConnect {
           console.log("Connected to SPAD! received:", subscription);
           this.sessionId = subscription.id;
           $.post(
-            `http://192.168.0.47:3000/api/spad-config`,
-            {
-              remoteHost: this.remoteHost,
-              sessionId: subscription.id,
-              apiKey: this.apiKey,
-            },
+            `/api/spad-config`,
+            { sessionId: subscription.id },
             function () {}
           ).fail(this.onError);
           this.ConnectSerial();
@@ -173,9 +169,14 @@ class SPADConnect {
               this.setDeviceData((prev) => ({ ...prev, [parts[1]]: parts[2] }));
             }
 
+            if (parts[0] === "6") {
+              // Device LED
+              this.setDeviceLed((prev) => ({ ...prev, [parts[1]]: parts[2] }));
+            }
+
             if (parts[0] === "7" && parts[3] === "2") {
               // Display Update
-              this.setDeviceDisplayUpdate((prev) => ({
+              this.setDeviceDisplay((prev) => ({
                 ...prev,
                 [parts[1]]: parts[4],
               }));

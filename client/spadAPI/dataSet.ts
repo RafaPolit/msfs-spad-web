@@ -7,7 +7,7 @@ interface DataSetArgs {
 
 const DataSet = async ({ url, apikey, name, value }: DataSetArgs) => {
   try {
-    const response = await fetch(`${url}/api/DataSet?apikey=${apikey}`, {
+    const response = await fetch(`${url}api/DataSet?apikey=${apikey}`, {
       method: "POST",
       cache: "no-cache",
       headers: { "Content-Type": "application/json" },

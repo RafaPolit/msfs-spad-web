@@ -1,11 +1,8 @@
-import React, { useState, useEffect, useRef, useMemo } from "react";
+import React from "react";
 import Image from "next/image";
-import { useRecoilValue } from "recoil";
-import { SpadConfig, spadConfigState } from "../../atoms/spadConfig";
-import { DataGet } from "../../spadAPI/dataGet";
 import { FGCPSourceModes } from "./FGCPSourceModes";
 import { SPADConnect } from "../../scripts/SPADConnect";
-import { atrDevice } from "../../config/atr";
+import { DeviceState } from "../../config/atr";
 
 const mainButton =
   "absolute w-[51px] h-[36px] rounded-lg bg-red-700 opacity-30";
@@ -14,66 +11,12 @@ const wheel = "absolute w-[40px] h-[60px] bg-red-700 opacity-30";
 const pushEncoder =
   "absolute w-[90px] h-[25px] rounded-lg bg-red-700 opacity-30";
 
-const updateValue = async (
-  spadConfig: SpadConfig,
-  name: string,
-  setter: React.Dispatch<React.SetStateAction<string>>
-) => {
-  const results = await DataGet({
-    url: `${spadConfig.address}:${spadConfig.port}`,
-    apikey: spadConfig.apiKey,
-    name,
-  });
-  setter(results.Result.Value);
-};
+interface FgcpProps {
+  atrEventHandler: SPADConnect;
+  deviceDisplay: DeviceState;
+}
 
-let count = 0;
-
-const Fgcp = () => {
-  const spadConfig = useRecoilValue(spadConfigState);
-  const [deviceData, setDeviceData] = useState({ "22": "0" } as {
-    [key: string]: string;
-  });
-  const [deviceLedUpdate, setDeviceLedUpdate] = useState(
-    {} as {
-      [key: string]: string;
-    }
-  );
-  const [deviceDisplayUpdate, setDeviceDisplayUpdate] = useState({
-    "1": "0",
-  } as {
-    [key: string]: string;
-  });
-
-  const atrEventHandler = useMemo(
-    () =>
-      new SPADConnect(spadConfig, atrDevice, [
-        setDeviceData,
-        setDeviceLedUpdate,
-        setDeviceDisplayUpdate,
-      ]),
-    [spadConfig]
-  );
-
-  useEffect(() => {
-    count += 1;
-    console.log("Enterded: ", count);
-    if (count === 2) {
-      atrEventHandler.ConnectEventSource();
-    }
-  }, [atrEventHandler]);
-
-  useEffect(
-    () => () => {
-      console.log("Exited: ", count);
-      if (count === 2) {
-        console.log("About to call disconnect?");
-        atrEventHandler.DisconnectSerial();
-      }
-    },
-    [atrEventHandler]
-  );
-
+const Fgcp = ({ atrEventHandler, deviceDisplay }: FgcpProps) => {
   return (
     <div className=" flex flex-col gap-2 place-content-center w-full">
       <div className="relative w-[780px] h-[212px] mt-20 mx-auto">
@@ -83,10 +26,7 @@ const Fgcp = () => {
           layout="fill"
           priority={true}
         />
-        <FGCPSourceModes
-          src1={deviceDisplayUpdate["1"]}
-          src2={deviceData["22"]}
-        />
+        <FGCPSourceModes src1={deviceDisplay["1"]} src2={deviceDisplay["2"]} />
         <button
           className={`${mainButton} top-[7px] left-[240px]`}
           onClick={() => atrEventHandler.SendEvent("8,1,1;8,1,0;")}

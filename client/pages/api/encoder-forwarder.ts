@@ -65,8 +65,8 @@ const handler = async (
           `8,${encoderMapping[index].encoder},${value};`
         );
     }
-    // console.log(results);
-    res.status(200).json({ message: "Success" });
+
+    res.status(200).json(results);
   } else {
     res.status(403).json({ message: "Error!  Only POST method allowed" });
   }
