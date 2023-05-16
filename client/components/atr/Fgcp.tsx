@@ -19,7 +19,15 @@ interface FgcpProps {
 const Fgcp = ({ atrEventHandler, deviceDisplay }: FgcpProps) => {
   return (
     <div className=" flex flex-col gap-2 place-content-center w-full">
-      <div className="relative w-[780px] h-[212px] mt-20 mx-auto">
+      <div className="relative w-[780px] h-[40px] mt-14 mx-auto">
+        <div className="absolute w-16 top-3 left-32 outline outline-8 outline-[#3c4a50] border-2 border-gray-500 px-3 rounded-t text-center font-mono">
+          {deviceDisplay["4"] || "---"}
+        </div>
+        <div className="absolute w-20 top-3 right-36 outline outline-8 outline-[#3c4a50] border-2 border-gray-500 px-3 rounded-t text-right font-mono">
+          {deviceDisplay["3"] || "-----"}
+        </div>
+      </div>
+      <div className="relative w-[780px] h-[212px] mx-auto">
         <Image
           src="/atr/FGCP.png"
           alt="ATR FGCP"
